@@ -46,6 +46,15 @@
 </header>
 
 <main>
+  <!-- Pam's testing of getting files, plz no delete-->
+  <div id="container">
+    <div id="main2">
+    </div>
+    <!-- I can now select a specific file to load. TOD: make this automatic, user should have no input-->
+    <input onchange="readFile(this)" type="file"/>
+  </div>
+  <!-- End of pam's testing of getting files-->
+
   <div class="album py-5 bg-light">
     <div class="container">
 
@@ -209,13 +218,71 @@
     </p>
   </div>
 </footer>
+<script>
+  // basic pet object
+    function Pet(name,breed,fixed,sex,age,animalID,vaccination,location,availability,type,details,image){
+    this.name=name;
+    this.breed=breed;
+    this.fixed=fixed;
+    this.sex=sex;
+    this.age=age;
+    this.animalID=animalID;
+    this.vaccination=vaccination;
+    this.location=location;
+    this.availablity=availability;
+    this.type=type;
+    this.details=details;
+    // TODO: images should be an array
+    // this.images[] = images;
+    }
+</script>
 
+<script>
+  // pam script
+  //let fileContents = [];
+  let fileContents = "";
+  // read text from file
+  // from w3docs.com/learn-javascript/file-and-filereader.html
+  function readFile(input){
+    let fr = new FileReader();
+    let file = input.files[0];
+    fr.readAsText(file);
+    fr.onload = function(){
+      fileContents = fr.result;
+      console.log(fileContents);
+      // here for testing purposes.
+      console.log("=======================");
+      // TODO: add if else loop, if filename = pictures.txt then use picturesSplit
+      // otherwise use petSplit
+      pictureSplit(fileContents);
+    };
+    // error handling of somesort.
+    fr.onerror = function(){
+      alert(fr.error);
+    };
+  }
+
+  // pam script for breaking apart the pictures.txt file
+  let lineBreakArray = [];
+  // TODO possibly rewrite where it will take in a string *and* a character to split on? Will save so much time
+  function pictureSplit(string){
+    // splits on the line break character.
+    lineBreakArray = string.split("\n");
+    console.log(lineBreakArray[0]);
+  }
+
+  //TODO write split for PET
+  
+ 
+</script>
+
+<script src="assets/js/getFile.js"></script>
 
     <script src="assets/dist/js/bootstrap.bundle.min.js"></script>
 
     <script src="assets/js/getAllURLParams.js"></script>
 	<script>
-	console.log(getAllUrlParams().page);
+	//console.log(getAllUrlParams().page);
 	</script>
       
   </body>
