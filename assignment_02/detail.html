@@ -10,7 +10,7 @@
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/album/">
 
-
+    
 
     <!-- Bootstrap core CSS -->
 <link href="assets/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -31,10 +31,10 @@
       }
     </style>
 
-
+    
   </head>
   <body>
-
+    
 <header>
   <div class="navbar navbar-dark bg-dark shadow-sm">
     <div class="container">
@@ -86,10 +86,17 @@
 
     <script src="assets/js/getAllURLParams.js"></script>
 	<script>
-	console.log(getAllUrlParams().pet);
+        var quotes=[
+          {text: 'quote1',
+          author: 'author1'}
+          ,
+          {text: 'quote2',
+          author: 'author2'}];
+
+        console.log(quotes[getAllUrlParams().index].text)
+
+	document.body.innerText=quotes[getAllUrlParams().index].text;
 	</script>
-
-  <button onclick="window.location.href = 'index.html';">Back to Home Page</button>
-
+      
   </body>
 </html>
