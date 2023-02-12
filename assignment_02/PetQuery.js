@@ -11,6 +11,7 @@ async function loadPage() {
     console.log(page);
     const response = await fetch('Pets.json');
     const json = await response.json();
-
+    console.log(json.pet[0].ID);
 }
+
 
