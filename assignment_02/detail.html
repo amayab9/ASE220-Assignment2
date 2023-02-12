@@ -48,7 +48,7 @@
   <div class="album py-5 bg-light">
     <div class="container">
 	<h1>Pet name</h1>
-	<div>Pet info goes here</div>
+	<div class="petInfo">Pet info goes here</div>
 	<hr />
 	<h2>Image Gallery</h2>
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
@@ -86,16 +86,43 @@
 
     <script src="assets/js/getAllURLParams.js"></script>
 	<script>
-        var quotes=[
-          {text: 'quote1',
-          author: 'author1'}
-          ,
-          {text: 'quote2',
-          author: 'author2'}];
-
-        console.log(quotes[getAllUrlParams().index].text)
-
-	document.body.innerText=quotes[getAllUrlParams().index].text;
+    
+	  document.h1.innerText = JSON.pet[getAllUrlParams().index].petName;
+    // TODO: set up error handling incase additionalDetail does not exist (it doesn't for at least one cat.)
+    document.getElementsByClassName("petInfo")[0].innerHTML +=`
+      <div>
+        <p>
+            ID: <a href="detail.html?index=${index}${JSON.pet[getAllURLParams().index].ID}</a><br />
+            Species: <a href="detail.html?index=${index}${JSON.pet[getAllURLParams().index].petType}</a><br />
+            Breed: <a href="detail.html?index=${index}${JSON.pet[getAllURLParams().index].breed}</a><br />
+            Fixed: <a href="detail.html?index=${index}${JSON.pet[getAllURLParams().index].spayedNeutered}</a><br />
+            Sex: <a href="detail.html?index=${index}${JSON.pet[getAllURLParams().index].Sex}</a><br />
+            Age: <a href="detail.html?index=${index}${JSON.pet[getAllURLParams().index].age}</a><br />
+            Vaccinated: <a href="detail.html?index=${index}${JSON.pet[getAllURLParams().index].vaccinationStatus}</a><br />
+            Location: <a href="detail.html?index=${index}${JSON.pet[getAllURLParams().index].location}</a><br />
+            Availble to Adopt: <a href="detail.html?index=${index}${JSON.pet[getAllURLParams().index].available}</a><br />
+            Additional Information: <a href="detail.html?index=${index}${JSON.pet[getAllURLParams().index].additionalDetail}</a><br />
+        </p>
+      </div>`;
+    /* Here for reference.
+    document.body.innerHTML+=`
+            <div>
+                <p>
+                    <a href="detail.html?index=${i}">${quotes[i].text}</a><br />
+                    ${quotes[i].author}<br />
+                </p>
+            </div>`;
+    */
+    // loop through the array of pictures
+    for(let i =0; i < JSON.pet[getAllUrlParams().index].pictures.length; i++){
+      document.body.innerHTML+=
+      // creaet a col for each picture
+      `<div class="col">
+          <div class="card shadow-sm">
+            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Pet: Picture" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><img src=${JSON.pet[getAllURLParams().index].pictures[i]}></img>"</svg>
+          </div>
+        </div>`
+    }
 	</script>
       
   </body>
