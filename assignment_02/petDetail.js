@@ -1,10 +1,14 @@
-document.getElementById('imageGallery').innerHTML += `
+document.getElementById('petInfo').innerHTML+= `
 <div id="petName" class="container">
-<h1>${json.pet.petName}</h1>
+<h1>${json.pet[].petName}</h1>
 <div>Pet info goes here</div>
-<hr />
-<h2>Image Gallery</h2>
-<div id="imageGallery" class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+${json.pet[].petType},<br>
+${json.pet[].breed} <br>
+${json.pet[].spayedNeutered}&emsp;  &emsp;${json.pet[].gender},<br>
+${json.pet[].age},<br>
+${json.pet[].vaccinationStatus},<br>
+${json.pet[].location},&emsp;  &emsp; ${json.pet[].avaliable},<br>
+${json.pet[].additionalDetails}
 </div>
 </div>`
 
