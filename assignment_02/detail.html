@@ -43,15 +43,9 @@
 </header>
 
 <main>
-  <div class="album py-5 bg-light">
-    <div class="container">
-	  <h1>Pet name</h1>
-	  <hr />
-    <div class="imageDisplay">
+<div class="petInfo">
 
-    </div>
-  </div>
-
+</div>
 </main>
 
 <footer class="text-muted py-5">
@@ -64,21 +58,30 @@
 
 
   <script src="assets/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/PetDetail.js"></script>
   <script src="assets/js/getAllURLParams.js"></script>
 
+  <!-- test code for doing this all in page. 
 	<script> 
   // declaring variable to write JSON results into
   var petsBetter;
 
   // fetching the data from JSON on page load
-  async function loadPage(){
-    const response = await fetch('Pets.JSON')
-    .then((response) => response.json())
-    .then((data) => console.log(data)); 
-  }
+  async function loadPage() {
+    let params = getAllUrlParams(window.location.href);
+    let page;
+    if (!params.hasOwnProperty('page')) {
+        page = 1;
+    } else {
+        page = params.page;
+    }
+    console.log(getAllUrlParams().index);
+    const response = await fetch('Pets.json');
+    const json = await response.json();
+    setCurrentPage(page, json);
+} 
 
   console.log('petsBetter data' + '/n/n/n' + petsBetter);
-
   // hardcoded array for testing purposes.
     let pets=[
       { 
@@ -116,21 +119,21 @@
     document.body.innerHTML += `
             <div>
               <p>
-                  ID: ${pets[1].ID}<br />
-                  Species: ${pets[1].petType}<br />
-                  Breed:  ${pets[1].breed}<br />
-                  Fixed: ${pets[1].spayedNeutered}<br />
-                  Sex: ${pets[1].sex}<br />
-                  Age: ${pets[1].age}<br />
-                  Vaccinated: ${pets[1].vaccinationStatus}<br />
-                  Location: ${pets[1].location}<br />
-                  Availble to Adopt: ${pets[1].available}<br />
-                  Additional Information: ${pets[1].additionalDetails}<br />
+                  ID: ${pets[getAllUrlParams().index].ID}<br />
+                  Species: ${pets[getAllUrlParams().index].petType}<br />
+                  Breed:  ${pets[getAllUrlParams().index].breed}<br />
+                  Fixed: ${pets[getAllUrlParams().index].spayedNeutered}<br />
+                  Sex: ${pets[getAllUrlParams().index].sex}<br />
+                  Age: ${pets[getAllUrlParams().index].age}<br />
+                  Vaccinated: ${pets[getAllUrlParams().index].vaccinationStatus}<br />
+                  Location: ${pets[getAllUrlParams().index].location}<br />
+                  Availble to Adopt: ${pets[getAllUrlParams().index].available}<br />
+                  Additional Information: ${pets[getAllUrlParams().index].additionalDetails}<br />
               </p>
               <hr />
             </div>`
     
 	</script> 
-      
+  -->
   </body>
 </html>

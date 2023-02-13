@@ -21,7 +21,7 @@ const setCurrentPage = (pageNum, content) => {
                                         ${item.location}</p>
                     <div class="d-flex justify-content-between align-items-center">
                       <div class="btn-group">
-                        <button href="detail.html?index=${item.ID}" type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                        <button type="button" class="btn btn-sm btn-outline-secondary"><a href="detail.html?index=${index}">View</a></button>
                       </div>
                       <small class="text-muted">${item.petType}</small>
                     </div>
