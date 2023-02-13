@@ -30,8 +30,6 @@
         }
       }
     </style>
-
-    
   </head>
   <body>
     
@@ -47,27 +45,10 @@
 <main>
   <div class="album py-5 bg-light">
     <div class="container">
-	<h1>Pet name</h1>
-	<div class="petInfo">Pet info goes here</div>
-	<hr />
-	<h2>Image Gallery</h2>
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-          </div>
-        </div>
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-          </div>
-        </div>
-      </div>
+	  <h1>Pet name</h1>
+	  <hr />
+    <div class="imageDisplay">
+
     </div>
   </div>
 
@@ -84,48 +65,64 @@
 
   <script src="assets/dist/js/bootstrap.bundle.min.js"></script>
   <script src="assets/js/getAllURLParams.js"></script>
-  <script src="assets/js/PetDetail.js"></script>
-	<script>
-    let pets = JSON.parse('Pets.json');
-    console.log(JSON.pets[5].petName);
-	 // document.h1.innerText = JSON.pet[getAllUrlParams().index].petName;
-    console.log(JSON.pet[3].petName);
-    // TODO: set up error handling incase additionalDetail does not exist (it doesn't for at least one cat.)
-    document.getElementsByClassName("petInfo")[0].innerHTML +=`
-      <div>
-        <p>
-            ID: <a href="detail.html?index=${index}${JSON.pet[getAllURLParams().index].ID}</a><br />
-            Species: <a href="detail.html?index=${index}${JSON.pet[getAllURLParams().index].petType}</a><br />
-            Breed: <a href="detail.html?index=${index}${JSON.pet[getAllURLParams().index].breed}</a><br />
-            Fixed: <a href="detail.html?index=${index}${JSON.pet[getAllURLParams().index].spayedNeutered}</a><br />
-            Sex: <a href="detail.html?index=${index}${JSON.pet[getAllURLParams().index].Sex}</a><br />
-            Age: <a href="detail.html?index=${index}${JSON.pet[getAllURLParams().index].age}</a><br />
-            Vaccinated: <a href="detail.html?index=${index}${JSON.pet[getAllURLParams().index].vaccinationStatus}</a><br />
-            Location: <a href="detail.html?index=${index}${JSON.pet[getAllURLParams().index].location}</a><br />
-            Availble to Adopt: <a href="detail.html?index=${index}${JSON.pet[getAllURLParams().index].available}</a><br />
-            Additional Information: <a href="detail.html?index=${index}${JSON.pet[getAllURLParams().index].additionalDetail}</a><br />
-        </p>
-      </div>`;
-    /* Here for reference.
-    document.body.innerHTML+=`
-            <div>
-                <p>
-                    <a href="detail.html?index=${i}">${quotes[i].text}</a><br />
-                    ${quotes[i].author}<br />
-                </p>
-            </div>`;
+  <!-- <script src="assets/js/PetDetail.js"></script> -->
+	<script> /*
+
     */
-    // loop through the array of pictures
-    for(let i =0; i < JSON.pet[getAllUrlParams().index].pictures.length; i++){
-      document.body.innerHTML+=
-      // create a col for each picture
-      `<div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Pet: Picture" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><img src=${JSON.pet[getAllURLParams().index].pictures[i]}></img>"</svg>
-          </div>
-        </div>`
+    let pets=[
+      { 
+        petName:"Milton",
+        ID:"25532",
+        petType:"Dog",
+        breed:"American Bulldog Cross",
+        spayedNeutered:true,
+        sex:"Male",
+        age:"3Yrs 4Mths 4Wks (approx)",
+        vaccinationStatus:true,
+        location:"Kenton county",
+        available:true,
+        additionalDetails:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ante tellus, sagittis at urna sit amet, faucibus faucibus lacus. Suspendisse rutrum nisl in augue convallis sollicitudin. Quisque nulla risus, ultrices vitae sollicitudin quis, pellentesque a ligula.",
+        pictures:["https://random.dog/00186969-c51d-462b-948b-30a7e1735908.jpg","https://random.dog/00564ba3-e5cb-4b2b-8d97-c65a9ef26c23.png","https://random.dog/00b417af-0b5f-42d7-9ad0-6aab6c3db491.jpg","https://random.dog/2059c82d-452f-4d80-bb11-818da1451511.jpg"]
+      },
+      {
+        petName:"Gypsy",
+        ID:"26002",
+        petType:"Dog",
+        breed:"American Bulldog cross",
+        spayedNeutered:true,
+        sex:"Female",
+        age:"2Yrs 2Mths 4Wks (approx)",
+        vaccinationStatus:true,
+        location:"Kenton county",
+        avaliable:true,
+        additionalDetails:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ante tellus, sagittis at urna sit amet, faucibus faucibus lacus. Suspendisse rutrum nisl in augue convallis sollicitudin. Quisque nulla risus, ultrices vitae sollicitudin quis, pellentesque a ligula.",
+        pictures:["https://random.dog/016d49aa-66f0-41de-872b-009367e97325.gif","https://random.dog/027eef85-ccc1-4a66-8967-5d74f34c8bb4.jpg","https://random.dog/02b1854b-bc69-4417-aa3f-96e63e699858.gif","https://random.dog/205a2763-6102-4b9c-9c8f-f944f6900a22.jpg","https://random.dog/20ce0116-cd55-4370-a728-ed6f37fc6c4b.jpg"]
+      }
+    ];
+
+    console.log(pets);
+    for(i = 0; i < pets.length; i++)
+    {
+      document.body.innerHTML += `
+            <div>
+              <p>
+                  ID: ${pets[i].ID}<br />
+                  Species: ${pets[i].petType}<br />
+                  Breed:  ${pets[i].breed}<br />
+                  Fixed: ${pets[i].spayedNeutered}<br />
+                  Sex: ${pets[i].sex}<br />
+                  Age: ${pets[i].age}<br />
+                  Vaccinated: ${pets[i].vaccinationStatus}<br />
+                  Location: ${pets[i].location}<br />
+                  Availble to Adopt: ${pets[i].avaliable}<br />
+                  Additional Information: ${pets[i].additionalDetails}<br />
+              </p>
+              <hr />
+            </div>`
     }
-	</script>
+    
+
+	</script> 
       
   </body>
 </html>
