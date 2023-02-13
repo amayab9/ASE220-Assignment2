@@ -49,9 +49,9 @@
     <main>
       <div class="album py-5 bg-light">
         <div class="container">
-          <div id="mainContent"class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-            <div id = 'pageListing' class="col">
-              
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            <div id = "pageListing" class="col">
+                <!--content is generated in here-->
             </div>
           </div>
         </div>
@@ -61,22 +61,6 @@
     <script src="PetQuery.js"></script>
     <script src="assets/js/getAllURLParams.js"></script>
 	<script>
-       var quotes=[
-        {text: 'quote1',
-        author: 'author1'}
-        ,
-        {text: 'quote2',
-        author: 'author2'}];
-
-    for(let i=0; i<quotes.length; i++){
-      document.body.innerHTML+=`
-        <div>
-          <p>
-            <a href="detail.html?index=${i}">${quotes[i].text}</a></br>
-            ${quotes[i].author} 
-          </p>
-        </div>`
-      }
 	console.log(getAllUrlParams());
 	</script>
       
