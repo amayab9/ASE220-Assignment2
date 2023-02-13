@@ -29,92 +29,88 @@
           font-size: 3.5rem;
         }
       }
+      .tab4 {
+            tab-size: 8;
+        }
     </style>
 
 
   </head>
   <body>
+    <header>
+      <div class="navbar navbar-dark bg-dark shadow-sm">
+        <div class="container">
+          <a href="#" class="navbar-brand d-flex align-items-center">
+            <strong>Pet adoption website</strong>
+          </a>
+        </div>
+      </div>
+    </header>
+    <main>
+      <div class="album py-5 bg-light">
+        <div class="container">
+          <div id="mainContent"class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            <div id = 'pageListing' class="col">
 
-<header>
-  <div class="navbar navbar-dark bg-dark shadow-sm">
-    <div class="container">
-      <a href="#" class="navbar-brand d-flex align-items-center">
-        <strong>Pet adoption website</strong>
-      </a>
-    </div>
-  </div>
-</header>
-
-<main>
-        <div class="col">
-          <div class="card shadow-sm">
-            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
-
-            <div class="card-body">
-              <p class="card-text">Key details about the pet.</p>
-              <div class="d-flex justify-content-between align-items-center">
-                <div class="btn-group">
-                  <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-
-                </div>
-                <small class="text-muted">Pet type</small>
-              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </div>
-
-</main>
-
-<style>
-
-a {
-  text-decoration: none;
-  display: inline-block;
-  padding: 8px 16px;
-}
-
-a:hover {
-  background-color: #ddd;
-  color: black;
-}
-
-.previous {
-  background-color: #f1f1f1;
-  color: black;
-}
-
-.next {
-  background-color: black;
-  color: white;
-}
-
-.round {
-  border-radius: 50%;
-}
-
-</style>
-
-<center><a href="#" class="previous round">&#8249;</a>
-<a href="#" class="next round">&#8250;</a></center>
-
-<footer class="text-muted py-5">
-  <div class="container">
-    <p class="float-end mb-1">
-      <a href="#">Back to top</a>
-    </p>
-  </div>
-</footer>
-
-
+    </main>
     <script src="assets/dist/js/bootstrap.bundle.min.js"></script>
-
+    <script src="PetQuery.js"></script>
     <script src="assets/js/getAllURLParams.js"></script>
 	<script>
-	console.log(getAllUrlParams().page);
+       var quotes=[
+        {text: 'quote1',
+        author: 'author1'}
+        ,
+        {text: 'quote2',
+        author: 'author2'}];
+
+    for(let i=0; i<quotes.length; i++){
+      document.body.innerHTML+=`
+        <div>
+          <p>
+            <a href="detail.html?index=${i}">${quotes[i].text}</a></br>
+            ${quotes[i].author}
+          </p>
+        </div>`
+      }
+	console.log(getAllUrlParams());
 	</script>
+
+  <style>
+
+  a {
+    text-decoration: none;
+    display: inline-block;
+    padding: 8px 16px;
+  }
+
+  a:hover {
+    background-color: #ddd;
+    color: black;
+  }
+
+  .previous {
+    background-color: #f1f1f1;
+    color: black;
+  }
+
+  .next {
+    background-color: black;
+    color: white;
+  }
+
+  .round {
+    border-radius: 50%;
+  }
+
+  </style>
+
+  <center><a href="#" class="previous round">&#8249;</a>
+  <a href="#" class="next round">&#8250;</a></center>
 
   </body>
 </html>
