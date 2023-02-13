@@ -1,15 +1,12 @@
-document.addEventListener('DOMContentLoaded', () => onLoad(), false);
+document.addEventListener('DOMContentLoaded', () => loadScript(), false);
 
-function onLoad() { 
+let pets1;
+function loadScript() { 
     // holding json data
-    let pets = new Array;
     // call the function to get the json
-   pets = fetchFunction("/assets/json/Pets.json").then(console.log("Push file fetch worked")).catch(error =>{
-            console.log(error);
-            console.log("PushFile can't fetch");
-        }
-    );
-    console.log('Checking if data wrote to Pets' + pets);
+    fetchFunction('Pets.json');
+
+    // console.log('Checking if data wrote to Pets' + pets[1]);
     // making changes to the HTML of detail.html
     // getAllUrlParams().index is here because in index.html we push across the index of the petObject in Pets
     /* document.getElementById('main').innerHTML += `
@@ -36,13 +33,15 @@ async function fetchFunction(id){
     const response = await fetch(id);
     // Resolves the promise as JSON
     const content = await response.json();
+    console.log("Content check in fetchFunction: " + content);
     // write JSON object to a variable.
-   // writeToVariable(content, pets); 
+   writeToVariable(content, pets1); 
     //Finally returns the JSON object 
-    return content;
+    //return content;
 }
 
 // might use this to get the JSON object into pets object.
 function writeToVariable(json, variable){
+    console.dir("JSON check" + json);
     variable = json;
 } 
