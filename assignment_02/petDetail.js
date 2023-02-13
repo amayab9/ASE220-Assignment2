@@ -1,14 +1,21 @@
+
+document.addEventListener('DOMContentLoaded', () => loadPage(), false);
+const setCurrentPage = (pageNum, content) => {
+    }
+    
+    let i= document.getElementById(content.pet.ID).index;
+    // set i equal to the value of the index of the pet with the matching ID
 document.getElementById('petInfo').innerHTML+= `
 <div id="petName" class="container">
-<h1>${json.pet[].petName}</h1>
+<h1>${content.pet[i].petName}</h1>
 <div>Pet info goes here</div>
-${json.pet[].petType},<br>
-${json.pet[].breed} <br>
-${json.pet[].spayedNeutered}&emsp;  &emsp;${json.pet[].gender},<br>
-${json.pet[].age},<br>
-${json.pet[].vaccinationStatus},<br>
-${json.pet[].location},&emsp;  &emsp; ${json.pet[].avaliable},<br>
-${json.pet[].additionalDetails}
+${content.pet[i].petType},<br>
+${content.pet[i].breed} <br>
+${content.pet[i].spayedNeutered}&emsp;  &emsp;${content.pet[i].gender},<br>
+${content.pet[i].age},<br>
+${content.pet[i].vaccinationStatus},<br>
+${content.pet[i].location},&emsp;  &emsp; ${content.pet[i].avaliable},<br>
+${content.pet[i].additionalDetails}
 </div>
 </div>`
 
@@ -37,6 +44,8 @@ document.getElementById('imageGallery').innerHTML += `
   </button>
 </div>`
 
+
+
 async function loadPage() {
     let params = getAllUrlParams(window.location.href);
     let page;
@@ -50,4 +59,5 @@ async function loadPage() {
     const json = await response.json();
     setCurrentPage(page, json);
 }
+
 
