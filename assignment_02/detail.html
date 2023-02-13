@@ -35,7 +35,6 @@
   </head>
   <body>
 
-
 <header>
   <div class="navbar navbar-dark bg-dark shadow-sm">
     <div class="container">
@@ -87,21 +86,29 @@
 
     <script src="assets/js/getAllURLParams.js"></script>
 	<script>
-	console.log(getAllUrlParams().pet);
+        var quotes=[
+          {text: 'quote1',
+          author: 'author1'}
+          ,
+          {text: 'quote2',
+          author: 'author2'}];
+
+        console.log(quotes[getAllUrlParams().index].text)
+
+	document.body.innerText=quotes[getAllUrlParams().index].text;
 	</script>
 
   <button onclick="window.location.href = 'index.html';">Back to Home Page</button>
 
+  if (sex = Female
+  {
+    background: purple;
+  }
 
-      if (sex = Female
-      {
-        background: purple;
-      }
-
-      else
-      {
-        background: blue
-      }
+  else
+  {
+    background: blue
+  }
 
   </body>
 </html>
