@@ -65,10 +65,21 @@
 
   <script src="assets/dist/js/bootstrap.bundle.min.js"></script>
   <script src="assets/js/getAllURLParams.js"></script>
-  <!-- <script src="assets/js/PetDetail.js"></script> -->
-	<script> /*
 
-    */
+	<script> 
+  // declaring variable to write JSON results into
+  var petsBetter;
+
+  // fetching the data from JSON on page load
+  async function loadPage(){
+    const response = await fetch('Pets.JSON')
+    .then((response) => response.json())
+    .then((data) => console.log(data)); 
+  }
+
+  console.log('petsBetter data' + '/n/n/n' + petsBetter);
+
+  // hardcoded array for testing purposes.
     let pets=[
       { 
         petName:"Milton",
@@ -94,34 +105,31 @@
         age:"2Yrs 2Mths 4Wks (approx)",
         vaccinationStatus:true,
         location:"Kenton county",
-        avaliable:true,
+        available:true,
         additionalDetails:"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam ante tellus, sagittis at urna sit amet, faucibus faucibus lacus. Suspendisse rutrum nisl in augue convallis sollicitudin. Quisque nulla risus, ultrices vitae sollicitudin quis, pellentesque a ligula.",
         pictures:["https://random.dog/016d49aa-66f0-41de-872b-009367e97325.gif","https://random.dog/027eef85-ccc1-4a66-8967-5d74f34c8bb4.jpg","https://random.dog/02b1854b-bc69-4417-aa3f-96e63e699858.gif","https://random.dog/205a2763-6102-4b9c-9c8f-f944f6900a22.jpg","https://random.dog/20ce0116-cd55-4370-a728-ed6f37fc6c4b.jpg"]
       }
     ];
 
     console.log(pets);
-    for(i = 0; i < pets.length; i++)
-    {
-      document.body.innerHTML += `
+
+    document.body.innerHTML += `
             <div>
               <p>
-                  ID: ${pets[i].ID}<br />
-                  Species: ${pets[i].petType}<br />
-                  Breed:  ${pets[i].breed}<br />
-                  Fixed: ${pets[i].spayedNeutered}<br />
-                  Sex: ${pets[i].sex}<br />
-                  Age: ${pets[i].age}<br />
-                  Vaccinated: ${pets[i].vaccinationStatus}<br />
-                  Location: ${pets[i].location}<br />
-                  Availble to Adopt: ${pets[i].avaliable}<br />
-                  Additional Information: ${pets[i].additionalDetails}<br />
+                  ID: ${pets[1].ID}<br />
+                  Species: ${pets[1].petType}<br />
+                  Breed:  ${pets[1].breed}<br />
+                  Fixed: ${pets[1].spayedNeutered}<br />
+                  Sex: ${pets[1].sex}<br />
+                  Age: ${pets[1].age}<br />
+                  Vaccinated: ${pets[1].vaccinationStatus}<br />
+                  Location: ${pets[1].location}<br />
+                  Availble to Adopt: ${pets[1].available}<br />
+                  Additional Information: ${pets[1].additionalDetails}<br />
               </p>
               <hr />
             </div>`
-    }
     
-
 	</script> 
       
   </body>

@@ -11,7 +11,7 @@ const setCurrentPage = (pageNum, content) => {
     const currRange = pageNum * paginationLimit;
     */ 
     content.pet.forEach((item, index) => {
-            document.getElementById('petInfo').innerHTML += `
+            document.getElementById('petInfo')[0].innerHTML += `
             <div>
               <p>
                   ID: <a href="detail.html?index=${pet.ID}</a><br />
