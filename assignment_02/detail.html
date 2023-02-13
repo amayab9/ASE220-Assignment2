@@ -47,8 +47,8 @@
 <main>
   <div class="album py-5 bg-light">
     <div class="container">
-	<h1>${json.pet[].petName}</h1>
-	<div>Pet info goes here</div>
+      <h1>Pet Name</h1>
+      <p> Pet Info </p>
 	<hr />
 	<h2>Image Gallery</h2>
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
@@ -86,17 +86,25 @@
 
     <script src="assets/js/getAllURLParams.js"></script>
 	<script>
-        var quotes=[
-          {text: 'quote1',
-          author: 'author1'}
-          ,
-          {text: 'quote2',
-          author: 'author2'}];
 
         console.log(quotes[getAllUrlParams().index].text)
 
 	document.body.innerText=quotes[getAllUrlParams().index].text;
-	</script>
+  	</script>
+
+    <script>
+       if (item.Sex = 'Female')
+  {
+    document.body.style.backgroundColor = "purple";
+  }
+
+  else
+  {
+    document.body.style.backgroundColor = "blue";
+  }
+    </script>
+
+    <button onclick="window.location.href = 'index.html';">Back to Home Page</button>
 
   </body>
 </html>
