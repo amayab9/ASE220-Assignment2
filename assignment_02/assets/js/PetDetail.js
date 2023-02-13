@@ -1,47 +1,57 @@
-document.addEventListener('DOMContentLoaded', () => loadScript(), false);
+document.addEventListener('DOMContentLoaded', () => fetchFunction(), false);
 
-let pets1;
-function loadScript() { 
-    // holding json data
+function loadScript(pets1) { 
     // call the function to get the json
-    fetchFunction('Pets.json');
+    // fetchFunction('Pets.json');
 
-    // console.log('Checking if data wrote to Pets' + pets[1]);
+    let targetIndex;
+
+    console.log(getAllUrlParams().index);
+    console.log("length of pet array:" + pets1.pet.length);
+    for(let i=0; i < pets1.pet.length; i++){
+        if(pets1.pet[i].ID == getAllUrlParams().index){
+            console.log("print found ID:" + pets1.pet[i].ID);
+            targetIndex = i;
+        }
+        else{}
+    }
+
     // making changes to the HTML of detail.html
-    // getAllUrlParams().index is here because in index.html we push across the index of the petObject in Pets
-    /* document.getElementById('main').innerHTML += `
+    petInfo.innerHTML += `
     <div id="petName" class="container">
-        <h1>${pets.pet[getAllUrlParams().index].petName}</h1>
+        <h1>${pets1.pet[targetIndex].petName}</h1>
         <p>
-            ID: ${json.pet[getAllUrlParams().index].ID}<br />
-            Species: ${json.pet[getAllUrlParams().index].petType}<br />
-            Breed: ${json.pet[getAllUrlParams().index].breed}<br />
-            Fixed: ${json.pet[getAllUrlParams().index].spayedNeutered}<br />
-            Sex: ${json.pet[getAllUrlParams().index].Sex}<br />
-            Age: ${json.pet[getAllUrlParams().index].age}<br />
-            Vaccinated: ${json.pet[getAllUrlParams().index].vaccinationStatus}<br />
-            Location: ${json.pet[getAllUrlParams().index].location}<<br />
-            Availble to Adopt: ${json.pet[getAllUrlParams().index].available}<br />
-            Additional Information: ${json.pet[getAllUrlParams().index].additionalDetail}<br />
+            ID: ${pets1.pet[targetIndex].ID}<br />
+            Species: ${pets1.pet[targetIndex].petType}<br />
+            Breed: ${pets1.pet[targetIndex].breed}<br />
+            Fixed: ${pets1.pet[targetIndex].spayedNeutered}<br />
+            Sex: ${pets1.pet[targetIndex].Sex}<br />
+            Age: ${pets1.pet[targetIndex].age}<br />
+            Vaccinated: ${pets1.pet[targetIndex].vaccinationStatus}<br />
+            Location: ${pets1.pet[targetIndex].location}<br />
+            Availble to Adopt: ${pets1.pet[targetIndex].available}<br />
+            Additional Information: ${pets1.pet[targetIndex].additionalDetail}<br />
         </p>
-    </div>`; */
+    </div>`;
+
+    //Carousel of images
+
 }
 
 //Function to get json
-async function fetchFunction(id){
+async function fetchFunction(){
     // Fetch the JSON 
-    const response = await fetch(id);
+    const response = await fetch('Pets.json');
     // Resolves the promise as JSON
     const content = await response.json();
-    console.log("Content check in fetchFunction: " + content);
-    // write JSON object to a variable.
-   writeToVariable(content, pets1); 
-    //Finally returns the JSON object 
-    //return content;
+    // pass content to loadScript for usage
+    loadScript(content);
 }
 
 // might use this to get the JSON object into pets object.
-function writeToVariable(json, variable){
-    console.dir("JSON check" + json);
-    variable = json;
+function writeToVariable(content1, variable){
+    let parsedJSON;
+    parsedJSON = JSON.parse(content1);
+    console.log("Check for parsed JSON" + parsedJSON);
+    variable = parsedJSON;
 } 
