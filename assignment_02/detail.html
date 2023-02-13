@@ -83,10 +83,13 @@
 
 
   <script src="assets/dist/js/bootstrap.bundle.min.js"></script>
-
   <script src="assets/js/getAllURLParams.js"></script>
+  <script src="assets/js/PetDetail.js"></script>
 	<script>
-	  document.h1.innerText = JSON.pet[getAllUrlParams().index].petName;
+    let pets = JSON.parse('Pets.json');
+    console.log(JSON.pets[5].petName);
+	 // document.h1.innerText = JSON.pet[getAllUrlParams().index].petName;
+    console.log(JSON.pet[3].petName);
     // TODO: set up error handling incase additionalDetail does not exist (it doesn't for at least one cat.)
     document.getElementsByClassName("petInfo")[0].innerHTML +=`
       <div>
