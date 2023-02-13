@@ -1,13 +1,8 @@
 document.addEventListener('DOMContentLoaded', () => fetchFunction(), false);
 
 function loadScript(pets1) { 
-    // call the function to get the json
-    // fetchFunction('Pets.json');
-
     let targetIndex;
-
-    console.log(getAllUrlParams().index);
-    console.log("length of pet array:" + pets1.pet.length);
+    // pick the pet based on ID which is passed through query string.
     for(let i=0; i < pets1.pet.length; i++){
         if(pets1.pet[i].ID == getAllUrlParams().index){
             console.log("print found ID:" + pets1.pet[i].ID);
@@ -35,7 +30,7 @@ function loadScript(pets1) {
     </div>`;
 
     //Carousel of images
-
+    
 }
 
 //Function to get json
