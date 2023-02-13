@@ -8,6 +8,9 @@ const setCurrentPage = (pageNum, content) => {
   currentPage = pageNum;
   const prevRange = (pageNum - 1) * paginationLimit;
   const currRange = pageNum * paginationLimit;
+  for(let i =0; i < pageCount; i++){
+    document.getElementById('pageNav').innerHTML += `<a href="index.html?page=${i+1}">${i+1}&emsp;</a> `
+  }
 
   content.pet.forEach((item, index) => {
     if (index >= prevRange && index < currRange) {
